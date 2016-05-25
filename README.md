@@ -1,23 +1,24 @@
 ![](https://github.com/cossacklabs/themis/wiki/images/logo.png)
 
-[![GitHub release](https://img.shields.io/github/release/cossacklabs/themis.svg?maxAge=2592000)](https://github.com/cossacklabs/themis/releases/latest)
+[![GitHub release](https://img.shields.io/github/release/cossacklabs/themis.svg)](https://github.com/cossacklabs/themis/releases/latest)
 [![Circle CI](https://circleci.com/gh/cossacklabs/themis/tree/master.svg?style=shield)](https://circleci.com/gh/cossacklabs/themis)
-[![CocoaPods](https://img.shields.io/cocoapods/l/themis.svg?maxAge=2592000)](https://github.com/cossacklabs/themis/blob/master/LICENSE)
+[![CocoaPods](https://img.shields.io/cocoapods/l/themis.svg)](https://github.com/cossacklabs/themis/blob/master/LICENSE)
 ![Platforms](https://img.shields.io/badge/platform-Android%20%7C%20iOS%20%7C%20OS%20X%20%7C%20Linux%20%7C%20Windows-green.svg)
 
-[![CocoaPods](https://img.shields.io/cocoapods/v/themis.svg?maxAge=2592000)](https://cocoapods.org/pods/themis)
-[![PyPI](https://img.shields.io/pypi/v/pythemis.svg?maxAge=2592000)](https://pypi.python.org/pypi?%3Aaction=search&term=pythemis&submit=search)
-[![npm](https://img.shields.io/npm/v/jsthemis.svg?maxAge=2592000)](https://www.npmjs.com/package/jsthemis)
-[![Gem](https://img.shields.io/gem/v/rubythemis.svg?maxAge=2592000)](https://rubygems.org/gems/rubythemis)
+[![CocoaPods](https://img.shields.io/cocoapods/v/themis.svg)](https://cocoapods.org/pods/themis)
+[![PyPI](https://img.shields.io/pypi/v/pythemis.svg)](https://pypi.python.org/pypi?%3Aaction=search&term=pythemis&submit=search)
+[![npm](https://img.shields.io/npm/v/jsthemis.svg)](https://www.npmjs.com/package/jsthemis)
+[![Gem](https://img.shields.io/gem/v/rubythemis.svg)](https://rubygems.org/gems/rubythemis)
 
-[![Twitter CossackLabs](https://img.shields.io/badge/twitter-cossaccklabs-fbb03b.svg)](http://twitter.com/cossacklabs)
-[![Blog](https://img.shields.io/badge/blog-cossaccklabs.com-7a7c98.svg)](https://cossacklabs.com/)
+[![Twitter CossackLabs](https://img.shields.io/badge/twitter-cossacklabs-fbb03b.svg)](http://twitter.com/cossacklabs)
+[![Blog](https://img.shields.io/badge/blog-cossacklabs.com-7a7c98.svg)](https://cossacklabs.com/)
 [![Join the chat at https://gitter.im/cossacklabs/themis](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cossacklabs/themis?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
+## Strong, usable cryptography for busy people
 
-Themis is open-source high-level cryptographic services library for mobile and server platforms, providing secure messaging and secure data storage. Current stable release is [0.9.2](https://github.com/cossacklabs/themis/releases/tag/0.9.2), dated 6th of November.
+Themis is open-source high-level cryptographic services library for mobile and server platforms, providing secure messaging and secure data storage.Current stable release is [0.9.3](https://github.com/cossacklabs/themis/releases/tag/0.9.3), dated 24th of May.
 
-Themis works in most operating systems (see [Availability](https://github.com/cossacklabs/themis#availability)), and is available for [Swift (iOS, OX)](https://github.com/cossacklabs/themis/wiki/Swift-Howto), [Objective-C (iOS, OX)](https://github.com/cossacklabs/themis/wiki/Objective-C-Howto), [Java / Android](https://github.com/cossacklabs/themis/wiki/Android-Howto),  [Ruby](https://github.com/cossacklabs/themis/wiki/Ruby-Howto),  [Python](https://github.com/cossacklabs/themis/wiki/Python-Howto), 
+Themis works in most operating systems (see [Availability](https://github.com/cossacklabs/themis#availability)), and is available for [Swift (iOS, OX)](https://github.com/cossacklabs/themis/wiki/Swift-Howto), [Objective-C (iOS, OX)](https://github.com/cossacklabs/themis/wiki/Objective-C-Howto), [Android](https://github.com/cossacklabs/themis/wiki/Android-Howto),  [Ruby](https://github.com/cossacklabs/themis/wiki/Ruby-Howto),  [Python](https://github.com/cossacklabs/themis/wiki/Python-Howto), 
 [PHP](https://github.com/cossacklabs/themis/wiki/PHP-Howto), 
 [C++](https://github.com/cossacklabs/themis/wiki/CPP-Howto), 
 [Javascript (NodeJS)](https://github.com/cossacklabs/themis/wiki/NodeJS-Howto),
@@ -28,7 +29,7 @@ Themis provides three important cryptographic services:
 * [Secure Session](https://github.com/cossacklabs/themis/wiki/Secure-Session-cryptosystem): session-oriented, forward secrecy messaging solution with better security guarantees, but more demanding infrastructure. ECDH key agreement, ECC & AES encryption.
 * [Secure Cell](https://github.com/cossacklabs/themis/wiki/Secure-Cell-cryptosystem): a multi-mode cryptographic container, suitable for storing anything from encrypted files to database records and format-preserved strings. Secure Cell is built around AES in GCM (Token and Seal modes) and CTR (Context imprint mode).
 
-Themis was designed to provide complicated cryptosystems in easy-to-use infrastructure, suitable for modern rapid development. Themis is based on best modern practices in implementing complicated security systems based on strongest available cryptographic algorithms in their safest forms. It is available for modern mobile and server languages (see below).
+Themis was designed to provide complicated cryptosystems in easy-to-use infrastructure, suitable for modern rapid development, does not require users to obsess over parameters, cipher combinations, allowing developers to focus on doing what is necessary: developing their applications. Themis is based on best modern practices in implementing complicated security systems based on strongest available cryptographic algorithms in their safest forms. It is available for modern mobile and server languages (see below).
 
 Themis is open source, Apache 2 Licensed.
 
@@ -61,14 +62,12 @@ Themis is available for the following languages:
 
 Themis supports the following architectures: x86/x64, armv*, various androids
 
-It is checked to compile on:
+It is checked to compile on latest stable versions of :
 
-* Debian 7.8, CentOS 6.6, CentOS Linux 7.1.1503, Ubuntu 14.04 LTS 
-* MS Windows 7, 8, 10
-* OSX 10.10—10.11
-* Android 4.4.2
-* Android 4.4.4 / CyanogenMod 11
-* Android 5
+* Debian 7.8+, CentOS 7, Ubuntu 14, Arch Linux 2014+
+* Windows XP+
+* OSX 10.9+
+* Android 4-5+ / CyanogenMod 11+
 * iOS7—iOS9+, x32/x64
 
 We plan to expand this minuscule availability scope with broader set of platforms. If you'd like to help Themis arrive (or get better) on your favourite platform / language — get in touch.
@@ -86,6 +85,10 @@ During development, we frequently do Proof-of-Concept projects to test different
 
 * 0fc anonymous web chat, pythemis (Python) + webthemis (C++ + HTML/JS): [github repo](https://github.com/cossacklabs/0fc) [blog post](https://cossacklabs.com/building-endtoend-webchat.html)
 * sesto: secure storage, pythemis (Python) + webthemis (C++ + HTML/JS): [github repo](https://github.com/cossacklabs/sesto) [blog post](https://cossacklabs.com/presenting-sesto.html)
+
+# Themis Server
+
+If you'd like to experiment with Themis in more interactive environment, check out [Themis Server](https://themis.cossacklabs.com), interactive debugging environment for Themis. 
 
 # Documentation
 

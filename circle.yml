@@ -13,6 +13,7 @@ dependencies:
 
   override:
     - make SECURE_COMPARATOR=enable
+    - make SECURE_COMPARATOR=enable JAVA_HOME=/usr/lib/jvm/default-java themis_jni
     - sudo make SECURE_COMPARATOR=enable install
     - sudo make SECURE_COMPARATOR=enable themispp_install
     - sudo make SECURE_COMPARATOR=enable pythemis_install
