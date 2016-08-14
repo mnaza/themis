@@ -61,15 +61,24 @@ themis_status_t secure_session_wrap(secure_session_t *session_ctx, const void *m
 	{
 		return THEMIS_FAIL;
 	}
-
+#ifdef STRICT_ALIGNMENT
+	curr_time=htobe64(curr_time);
+	memcpy(ts, (uint8_t*)(&curr_time), 8);
+#else
 	*((uint64_t *)ts) = htobe64(curr_time);
-
+#endif
 	*wrapped_message_length = WRAPPED_SIZE(message_length);
 	memmove(ts + 8, message, message_length);
 
+#ifdef STRICT_ALIGNMENT
+	uint32_t hsec = htonl(session_ctx->out_seq);
+	uint32_t hlength = htonl(message_length + sizeof(uint32_t) + sizeof(uint64_t));
+	memcpy((uint8_t*)seq, (uint8_t*)(&hsec), 4);
+	memcpy((uint8_t*)length, (uint8_t*)(&hlength), 4);
+#else
 	*seq = htonl(session_ctx->out_seq);
 	*length = htonl(message_length + sizeof(uint32_t) + sizeof(uint64_t));
-
+#endif
 	res = soter_rand(iv, CIPHER_MAX_BLOCK_SIZE);
 	if (THEMIS_SUCCESS != res)
 	{
@@ -82,7 +91,12 @@ themis_status_t secure_session_wrap(secure_session_t *session_ctx, const void *m
 		return res;
 	}
 
+#ifdef STRICT_ALIGNMENT
+	uint32_t hscsi = htonl(session_ctx->session_id);
+	memcpy((uint8_t*)session_id, (uint8_t*)(&hscsi), 4);
+#else
 	*session_id = htonl(session_ctx->session_id);
+#endif
 	session_ctx->out_seq++;
 
 	return THEMIS_SUCCESS;

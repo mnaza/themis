@@ -36,7 +36,7 @@ soter_status_t soter_verify_container_checksum(const soter_container_hdr_t *hdr)
 
 #define soter_container_data(_HDR_) ((uint8_t *)((_HDR_) + 1))
 #define soter_container_const_data(_HDR_) ((const uint8_t *)((_HDR_) + 1))
-#ifdef ASMJS
+#ifdef STRICT_ALIGNMENT
 size_t soter_container_data_size(const soter_container_hdr_t *hdr);
 size_t soter_container_size(const soter_container_hdr_t *hdr);
 uint32_t soter_container_crc(const soter_container_hdr_t *hdr);

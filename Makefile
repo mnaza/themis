@@ -51,8 +51,8 @@ define themisecho
       @tput sgr0
 endef
 
-ifdef STRICT_ALIGNMENT
-    CFLAGS += -DASMJS
+ifdef ASMJS
+    CFLAGS += -DASMJS -DSTRICT_ALIGNMENT
 endif
 
 ifeq ($(ENGINE),)

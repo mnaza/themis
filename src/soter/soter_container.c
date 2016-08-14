@@ -46,7 +46,7 @@ soter_status_t soter_verify_container_checksum(const soter_container_hdr_t *hdr)
 	}
 }
 
-#ifdef ASMJS
+#ifdef STRICT_ALIGNMENT
 size_t soter_container_data_size(const soter_container_hdr_t *hdr){
   size_t s_size;						       
   uint8_t* ps_size=(uint8_t*)(&s_size);			       
