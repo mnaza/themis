@@ -119,6 +119,8 @@
 # define __LITTLE_ENDIAN LITTLE_ENDIAN
 # define __PDP_ENDIAN PDP_ENDIAN
  
+#elif defined(ASMJS)
+
 #else
  
 # error platform not supported

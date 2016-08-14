@@ -32,7 +32,7 @@ soter_sign_alg_t get_key_sign_type(const void *sign_key, size_t sign_key_length)
 
 	if (sign_key_length >= sizeof(soter_container_hdr_t))
 	{
-		if (sign_key_length < ntohl(key->size))
+		if (sign_key_length < soter_container_size(key))
 		{
 			return (soter_sign_alg_t)0xffffffff;
 		}
@@ -57,7 +57,7 @@ soter_sign_alg_t get_peer_key_sign_type(const void *sign_key, size_t sign_key_le
 
 	if (sign_key_length >= sizeof(soter_container_hdr_t))
 	{
-		if (sign_key_length < ntohl(key->size))
+		if (sign_key_length < soter_container_size(key))
 		{
 			return (soter_sign_alg_t)0xffffffff;
 		}

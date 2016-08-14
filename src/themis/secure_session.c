@@ -326,7 +326,7 @@ static themis_status_t secure_session_accept(secure_session_t *session_ctx, cons
 		return THEMIS_INVALID_PARAMETER;
 	}
 
-	sign_key_length = ntohl(peer_sign_key->size);
+	sign_key_length = soter_container_size(peer_sign_key);
 
 	if (sizeof(soter_container_hdr_t) >= sign_key_length)
 	{
@@ -500,7 +500,7 @@ static themis_status_t secure_session_proceed_client(secure_session_t *session_c
 		return THEMIS_INVALID_PARAMETER;
 	}
 
-	peer_ecdh_key_length = ntohl(peer_ecdh_key->size);
+	peer_ecdh_key_length = soter_container_data_size(peer_ecdh_key) + sizeof(soter_container_hdr_t);
 
 	signature = (const uint8_t *)peer_ecdh_key + peer_ecdh_key_length;
 	signature_length = (const uint8_t *)data + soter_container_data_size(proto_message) + sizeof(soter_container_hdr_t) - signature;
@@ -517,7 +517,7 @@ static themis_status_t secure_session_proceed_client(secure_session_t *session_c
 		return THEMIS_INVALID_PARAMETER;
 	}
 
-	sign_key_length = ntohl(peer_sign_key->size);
+	sign_key_length = soter_container_size(peer_sign_key);
 
 	if (sizeof(soter_container_hdr_t) >= sign_key_length)
 	{

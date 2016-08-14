@@ -25,9 +25,9 @@
 struct soter_container_hdr_type
 {
 	char tag[SOTER_CONTAINER_TAG_LENGTH];
-	int32_t size; /* Size is data + sizeof(soter_container_hdr_t), so should be not less than sizeof(soter_container_hdr_t). Network byte order. */
-	uint32_t crc;
-};
+	int32_t _size; /* Size is data + sizeof(soter_container_hdr_t), so should be not less than sizeof(soter_container_hdr_t). Network byte order. */
+	uint32_t _crc;
+} __attribute__((aligned (4)));
 
 typedef struct soter_container_hdr_type soter_container_hdr_t;
 
@@ -36,7 +36,20 @@ soter_status_t soter_verify_container_checksum(const soter_container_hdr_t *hdr)
 
 #define soter_container_data(_HDR_) ((uint8_t *)((_HDR_) + 1))
 #define soter_container_const_data(_HDR_) ((const uint8_t *)((_HDR_) + 1))
-#define soter_container_data_size(_HDR_) ((size_t)ntohl((_HDR_)->size) - sizeof(soter_container_hdr_t))
-#define soter_container_set_data_size(_HDR_, _SIZE_) ((_HDR_)->size = htonl(_SIZE_ + sizeof(soter_container_hdr_t)))
+#ifdef ASMJS
+size_t soter_container_data_size(const soter_container_hdr_t *hdr);
+size_t soter_container_size(const soter_container_hdr_t *hdr);
+uint32_t soter_container_crc(const soter_container_hdr_t *hdr);
+void soter_container_set_data_size(soter_container_hdr_t *hdr, const uint32_t data_size);
+void soter_container_set_size(soter_container_hdr_t *hdr, const uint32_t size);
+void soter_container_set_crc(soter_container_hdr_t *hdr, const uint32_t crc);
+#else
+#define soter_container_data_size(_HDR_) ((size_t)ntohl((_HDR_)->_size) - sizeof(soter_container_hdr_t))
+#define soter_container_size(_HDR_) ((size_t)ntohl((_HDR_)->_size))
+#define soter_container_crc(_HDR_) ((size_t)ntohl((_HDR_)->_crc))
+#define soter_container_set_size(_HDR_, _SIZE_) ((_HDR_)->_size = _SIZE_)
+#define soter_container_set_crc(_HDR_, _CRC_) ((_HDR_)->_crc = _CRC_)
+#define soter_container_set_data_size(_HDR_, _SIZE_) ((_HDR_)->_size = htonl(_SIZE_ + sizeof(soter_container_hdr_t)))
+#endif
 
 #endif /* SOTER_CONTAINER_H */

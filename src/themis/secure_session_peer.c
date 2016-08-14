@@ -25,7 +25,6 @@ void secure_session_peer_cleanup(secure_session_peer_t *peer)
 	{
 		free(peer->id);
 	}
-
 	memset(peer, 0, sizeof(secure_session_peer_t));
 }
 
@@ -47,6 +46,7 @@ themis_status_t secure_session_peer_init(secure_session_peer_t *peer, const void
 	memcpy(peer->id, id, id_len);
 
 	peer->sign_key = peer->id + id_len;
+
 	peer->sign_key_length = sign_key_len;
 	memcpy(peer->sign_key, sign_key, sign_key_len);
 
@@ -56,6 +56,5 @@ themis_status_t secure_session_peer_init(secure_session_peer_t *peer, const void
 		peer->ecdh_key_length = ecdh_key_len;
 		memcpy(peer->ecdh_key, ecdh_key, ecdh_key_len);
 	}
-
 	return THEMIS_SUCCESS;
 }

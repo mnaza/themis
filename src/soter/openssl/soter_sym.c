@@ -255,7 +255,7 @@ soter_status_t soter_sym_aead_encrypt_final(soter_sym_ctx_t *ctx, void* auth_tag
     return SOTER_BUFFER_TOO_SMALL;
   }
   SOTER_CHECK(soter_sym_aead_ctx_final(ctx, true)==SOTER_SUCCESS);
-  SOTER_CHECK(EVP_CIPHER_CTX_ctrl(&(ctx->evp_sym_ctx), EVP_CTRL_GCM_GET_TAG, SOTER_AES_GCM_AUTH_TAG_LENGTH, auth_tag));
+  SOTER_CHECK(0!=EVP_CIPHER_CTX_ctrl(&(ctx->evp_sym_ctx), EVP_CTRL_GCM_GET_TAG, SOTER_AES_GCM_AUTH_TAG_LENGTH, auth_tag));
   (*auth_tag_length)=SOTER_AES_GCM_AUTH_TAG_LENGTH;
   return SOTER_SUCCESS;
 }

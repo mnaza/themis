@@ -161,7 +161,8 @@ themis_status_t themis_auth_sym_encrypt_message_(const uint8_t* key,
   hdr->auth_tag_length=THEMIS_AUTH_SYM_AUTH_TAG_LENGTH;
   hdr->message_length=(uint32_t)message_length;
   size_t auth_tag_length=THEMIS_AUTH_SYM_AUTH_TAG_LENGTH;
-  THEMIS_CHECK(themis_auth_sym_plain_encrypt(THEMIS_AUTH_SYM_ALG, key, key_length, iv, THEMIS_AUTH_SYM_IV_LENGTH, in_context, in_context_length, message, message_length, encrypted_message, encrypted_message_length, auth_tag, &auth_tag_length)==THEMIS_SUCCESS && auth_tag_length==THEMIS_AUTH_SYM_AUTH_TAG_LENGTH);
+  THEMIS_CHECK(themis_auth_sym_plain_encrypt(THEMIS_AUTH_SYM_ALG, key, key_length, iv, THEMIS_AUTH_SYM_IV_LENGTH, in_context, in_context_length, message, message_length, encrypted_message, encrypted_message_length, auth_tag, &auth_tag_length)==THEMIS_SUCCESS);
+  THEMIS_CHECK(auth_tag_length==THEMIS_AUTH_SYM_AUTH_TAG_LENGTH);
   return THEMIS_SUCCESS;
 }
 

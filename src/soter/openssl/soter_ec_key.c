@@ -164,7 +164,7 @@ soter_status_t soter_engine_specific_to_ec_pub_key(const soter_engine_specific_e
 	}
 
 	memcpy(key->tag, ec_pub_key_tag(curve), SOTER_CONTAINER_TAG_LENGTH);
-	key->size = htonl(output_length);
+	soter_container_set_size(key, output_length);
 	soter_update_container_checksum(key);
 	*key_length = output_length;
 	res = SOTER_SUCCESS;
@@ -235,7 +235,7 @@ soter_status_t soter_engine_specific_to_ec_priv_key(const soter_engine_specific_
 	}
 
 	memcpy(key->tag, ec_priv_key_tag(curve), SOTER_CONTAINER_TAG_LENGTH);
-	key->size = htonl(output_length);
+	soter_container_set_size(key, output_length);
 	soter_update_container_checksum(key);
 	*key_length = output_length;
 	res = SOTER_SUCCESS;
@@ -261,7 +261,7 @@ soter_status_t soter_ec_pub_key_to_engine_specific(const soter_container_hdr_t *
 		return SOTER_INVALID_PARAMETER;
 	}
 
-	if (key_length != ntohl(key->size))
+	if (key_length != soter_container_size(key))
 	{
 		return SOTER_INVALID_PARAMETER;
 	}
@@ -366,7 +366,7 @@ soter_status_t soter_ec_priv_key_to_engine_specific(const soter_container_hdr_t 
 	EVP_PKEY *pkey = (EVP_PKEY *)(*engine_key);
 	soter_status_t res;
 
-	if (key_length != ntohl(key->size))
+	if (key_length != soter_container_size(key))
 	{
 		return SOTER_INVALID_PARAMETER;
 	}
