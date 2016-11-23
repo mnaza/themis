@@ -11,7 +11,7 @@ if [ "$ARCH" == "x86_64" ]
 then
     ARCH=amd64
 fi
-PACKAGE=libthemis-dev_0.9.3_$ARCH
+PACKAGE=libthemis-dev_0.9.4_$ARCH
 PACKAGE_DIR=build/$PACKAGE
 
 mkdir -p $PACKAGE_DIR/DEBIAN/
@@ -22,7 +22,7 @@ mkdir -p $PACKAGE_DIR/usr/lib
 
 
 echo "Package: libthemis-dev
-Version: 0.9.3-1
+Version: 0.9.4
 Maintainer: CossackLabs LTD <dev@cossacklabs.com> Package: libthemis-dev
 Architecture: $ARCH
 Section: libdevel
@@ -35,11 +35,11 @@ Description: Data security library for network communication and data storage.
 Depends: libssl-dev
 Priority: optional
 Origin: http://cossacklabs.com
-X-Source: https://github.com/cossacklabs/themis/archive/0.9.3.tar.gz" >$PACKAGE_DIR/DEBIAN/control
+X-Source: https://github.com/cossacklabs/themis/archive/0.9.4.tar.gz" >$PACKAGE_DIR/DEBIAN/control
 
 #echo "Format: http://dep.debian.net/deps/dep5
 #Upstream-Name: themis
-#Source: https://github.com/cossacklabs/themis/archive/0.9.3.tar.gz
+#Source: https://github.com/cossacklabs/themis/archive/0.9.4.tar.gz
 #
 #
 #Files: *

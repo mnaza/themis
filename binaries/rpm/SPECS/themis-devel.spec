@@ -1,6 +1,6 @@
 Summary: Data security library for network communication and data storage.
 Name: themis-devel
-Version: 0.9.3
+Version: 0.9.4
 Release: 1
 
 Group: System Environment/Libraries

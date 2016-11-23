@@ -1,6 +1,6 @@
 Summary: Data security library for network communication and data storage.
 Name: themis
-Version: 0.9.3
+Version: 0.9.4
 Release: 1
 Group: System Environment/Libraries
 URL: http://cossacklabs.com/themis
@@ -8,7 +8,7 @@ Vendor: Cossack Labs Limited.
 Packager: Andrey Mnatsakanov<andrey@cossacklabs.com>
 License: Apache License, Version 2.0
 Requires: openssl-devel
-Source: https://github.com/cossacklabs/themis/archive/0.9.3.tar.gz
+Source: https://github.com/cossacklabs/themis/archive/0.9.4.tar.gz
 
 %description
 Themis is a data security library, providing users with high-quality security
