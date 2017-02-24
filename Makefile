@@ -150,6 +150,13 @@ CFLAFS += -arch $(ARCH)
 endif
 endif
 
+ifdef COVERAGE
+	CFLAGS += -g -O0 --coverage
+	COVERLDFLAGS = --coverage
+else
+	COVERLDFLAGS = 
+endif
+
 ifdef DEBUG
 # Making debug build for now
 	CFLAGS += -DDEBUG -g
@@ -172,6 +179,7 @@ ifdef PHP_VERSION
 	@echo -n "make tests for phpthemis "
 	@echo "php -c tests/phpthemis/php.ini ./tests/tools/phpunit.phar ./tests/phpthemis/scell_test.php" > ./$(BIN_PATH)/tests/phpthemis_test.sh
 	@echo "php -c tests/phpthemis/php.ini ./tests/tools/phpunit.phar ./tests/phpthemis/smessage_test.php" >> ./$(BIN_PATH)/tests/phpthemis_test.sh
+	@echo "php -c tests/phpthemis/php.ini ./tests/tools/phpunit.phar ./tests/phpthemis/ssession_test.php" >> ./$(BIN_PATH)/tests/phpthemis_test.sh
 	@chmod a+x ./$(BIN_PATH)/tests/phpthemis_test.sh
 	@$(PRINT_OK_)
 endif
@@ -219,7 +227,7 @@ soter_static: $(SOTER_OBJ)
 	@echo -n "link "
 	@$(BUILD_CMD)
 
-soter_shared: CMD = $(CC) -shared -o $(BIN_PATH)/lib$(SOTER_BIN).$(SHARED_EXT) $(SOTER_OBJ) $(LDFLAGS)
+soter_shared: CMD = $(CC) -shared -o $(BIN_PATH)/lib$(SOTER_BIN).$(SHARED_EXT) $(SOTER_OBJ) $(LDFLAGS) $(COVERLDFLAGS)
 
 soter_shared: $(SOTER_OBJ)
 	@echo -n "link "
@@ -235,7 +243,7 @@ themis_static: soter_static $(THEMIS_OBJ)
 	@echo -n "link "
 	@$(BUILD_CMD)
 
-themis_shared: CMD = $(CC) -shared -o $(BIN_PATH)/lib$(THEMIS_BIN).$(SHARED_EXT) $(THEMIS_OBJ) -L$(BIN_PATH) -l$(SOTER_BIN)
+themis_shared: CMD = $(CC) -shared -o $(BIN_PATH)/lib$(THEMIS_BIN).$(SHARED_EXT) $(THEMIS_OBJ) -L$(BIN_PATH) -l$(SOTER_BIN) $(COVERLDFLAGS)
 
 themis_shared: soter_shared $(THEMIS_OBJ)
 	@echo -n "link "
